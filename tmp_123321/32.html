@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="Biswajit Thakur" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>list of verbs</title>
+<link rel="stylesheet" href="./src/css/verbs.css">
+<style type="text/css">
+#my_btn {
+     background-color:tomato;
+     border:1px solid tomato;
+     color:#ffffff;
+     width:20%;
+     border-radius:5px;
+}
+.form-style-6{
+	font: 95% Arial, Helvetica, sans-serif;
+	max-width: 400px;
+	margin: 10px auto;
+	padding: 16px;
+	background: #252525;
+}
+.form-style-6 h1{
+	background: #303030;
+	padding: 20px 0;
+	font-size: 140%;
+	font-weight: 300;
+	text-align: center;
+	font-weight:bold;
+	color: #fff;
+	margin: -16px -16px 16px -16px;
+}
+.form-style-6 input[type="text"],
+.form-style-6 input[type="date"],
+.form-style-6 input[type="datetime"],
+.form-style-6 input[type="email"],
+.form-style-6 input[type="number"],
+.form-style-6 input[type="search"],
+.form-style-6 input[type="time"],
+.form-style-6 input[type="url"],
+.form-style-6 textarea,
+.form-style-6 select 
+{
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	background: #111111;
+	margin-bottom: 4%;
+	border: 1px solid #ccc;
+	padding: 3%;
+	color: #555;
+	font: 95% Arial, Helvetica, sans-serif;
+}
+.form-style-6 input[type="text"]:focus,
+.form-style-6 input[type="date"]:focus,
+.form-style-6 input[type="datetime"]:focus,
+.form-style-6 input[type="email"]:focus,
+.form-style-6 input[type="number"]:focus,
+.form-style-6 input[type="search"]:focus,
+.form-style-6 input[type="time"]:focus,
+.form-style-6 input[type="url"]:focus,
+.form-style-6 textarea:focus,
+.form-style-6 select:focus
+{
+	box-shadow: 0 0 5px #43D1AF;
+	padding: 3%;
+	border: 1px solid #43D1AF;
+}
+
+.form-style-6 input[type="submit"],
+.form-style-6 input[type="button"]{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	padding: 3%;
+	background: #43D1AF;
+	border-bottom: 2px solid #30C29E;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;	
+	color: #fff;
+}
+.form-style-6 input[type="submit"]:hover,
+.form-style-6 input[type="button"]:hover{
+	background: #2EBC99;
+}
+</style>
+<script src="./src/js/verbs.js"></script>
+</head>
+<body>
+
+<details>
+<summary><b>settings</b></summary>
+<div class="form-style-6">
+<h1>Add</h1>
+<form id="_add_">
+<input type="text" id="bn_a" name="bn_a" placeholder="Bengali" />
+<input type="text" id="v1_a" name="v1_a" placeholder="present" />
+<input type="text" id="v2_a" name="v2_a" placeholder="past" />
+<input type="text" id="v3_a"  name="v3_a" placeholder="past participle" />
+<input type="submit" value="Send" />
+</form>
+</div>
+
+<div class="form-style-6">
+<h1>Remove</h1>
+<form id="_remove_">
+<input type="text" id="_rm_r"  name="s_no" placeholder="S.no" />
+<input type="submit" value="Send" />
+</form>
+</div>
+
+<div class="form-style-6">
+<h1>Update</h1>
+<form id="_updaye_">
+<input type="text" id="up_sn" name="sn" placeholder="S.no" />
+<input type="text" id="up_bn" name="bn" placeholder="Bengali" />
+<input type="text" id="up_v1" name="v1" placeholder="present" />
+<input type="text" id="up_v2" name="v2" placeholder="past" />
+<input type="text" id="up_v3" name="v3" placeholder="past participle" />
+<input type="submit" value="Send" />
+</form>
+</div>
+</details>
+
+<input type="text" id="myInput" onkeyup="myFu()">
+<table class="hovertable">
+  <thead>
+  <tr><th>S.no</th><th>bengali</th><th>present tense</th><th>past tense</th><th>past participle</th></tr>
+  </thead>
+  <tbody id="tbody">
+  </tbody>
+</table>
+<br/>
+
+<script>
+'use strict';
+
+
+if(!sessionStorage.getItem("password")){
+    sessionStorage.setItem("password",'');
+};
+
+
+let __all__data;
+
+/*******************/
+function obj_url(nnn){
+   return Object.keys(nnn).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(nnn[key])}`).join('&');
+};
+/*******************/
+
+/***************/
+function _load(data){
+let dataX='';
+for(let a=0;a<data.length;a++){
+  dataX+='<tr>';
+  dataX+='<td style="color:yellow;">'+parseInt(a+1)+'<\/td>';
+  dataX+='<td>'+data[a].bn+'<\/td>';
+  dataX+='<td>'+data[a].v1+'<\/td>';
+  dataX+='<td>'+data[a].v2+'<\/td>';
+  dataX+='<td>'+data[a].v3+'<\/td>';
+  dataX+='<\/tr>'; }
+document.getElementById('tbody').innerHTML=dataX;
+};
+/*****************/
+
+/****************/
+fetch('./verbs.json').then(res=>res.json()).then((data)=>{
+      __all__data = data;
+_load(__all__data);});
+/***************/
+
+/***************/
+document.getElementById("_add_").onsubmit = function(e){
+    e.preventDefault();
+        const add_data = {
+             pass : prompt("password",sessionStorage.getItem("password")),
+           action : "_insert",
+             data : JSON.stringify({
+                      bn : document.getElementById("bn_a").value,
+                      v1 : document.getElementById("v1_a").value,
+                      v2 : document.getElementById("v2_a").value,
+                      v3 : document.getElementById("v3_a").value
+             })
+        };
+     fetch(`./verbs.json?${obj_url(add_data)}`).then(res=>res.json()).then((data)=>{
+           __all__data = data;
+           sessionStorage.setItem("password", add_data.pass);
+     _load(__all__data);});
+};
+/*****************/
+
+/****************/
+document.getElementById("_remove_").onsubmit = function(e){
+     e.preventDefault();
+        const ind_no = Number(document.getElementById("_rm_r").value)-1;
+        const __dd_ =  __all__data[ind_no];
+        const rm_data = {
+                pass : prompt("password",sessionStorage.getItem("password")),
+                action : "delete",
+                data : JSON.stringify(__dd_)
+            };
+   if(confirm(`Do you want to delete\n ${JSON.stringify(__dd_,null,2)}`)){
+       fetch(`./verbs.json?${obj_url(rm_data)}`).then(res=>res.json()).then((data)=>{
+             __all__data = data;
+             sessionStorage.setItem("password", rm_data.pass);
+       _load(__all__data);});
+     };
+};
+/****************/
+
+/****************/
+document.getElementById("_updaye_").onsubmit=function(e){
+    e.preventDefault();
+       const ind_no = Number(document.getElementById("up_sn").value)-1;
+       const __old_data =  __all__data[ind_no];
+       const __new_data = {
+                bn : document.getElementById("up_bn").value,
+                v1 : document.getElementById("up_v1").value,
+                v2 : document.getElementById("up_v2").value,
+                v3 : document.getElementById("up_v3").value
+       };
+       const _up_data = {
+              pass : prompt("password",sessionStorage.getItem("password")),
+            action : "update",
+              data : JSON.stringify(__new_data),
+               old : JSON.stringify(__old_data)
+       };
+       fetch(`./verbs.json?${obj_url(_up_data)}`).then(res=>res.json()).then((data)=>{
+             __all__data = data;
+             sessionStorage.setItem("password", _up_data.pass);
+       _load(__all__data);});
+       
+};
+/****************/
+
+document.getElementById("_updaye_").onkeyup = function (e){
+         let valll_ = parseInt(document.getElementById("up_sn").value)-1;
+   if(__all__data.length > valll_){
+       document.getElementById("up_bn").value = __all__data[valll_].bn;
+       document.getElementById("up_v1").value = __all__data[valll_].v1;
+       document.getElementById("up_v2").value = __all__data[valll_].v2;
+       document.getElementById("up_v3").value = __all__data[valll_].v3;
+    }
+}
+
+
+
+
+_load();
+</script>
+</body>
+</html>

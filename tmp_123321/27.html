@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="Biswajit Thakur" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<style>
+body {
+     margin:5px;
+     padding:5px;
+     font-family:arial;
+     color:#ffffff;
+     background:#121212;
+     text-align: center;
+}
+.main {
+     background:#202020;
+    /* height:300px;*/
+}
+
+.main1 {
+      padding:10px;
+      margin:10px;
+      background:#232323;
+}
+.main2 {
+     margin:10px;
+     padding:10px;
+     color:#ff00ff;
+}
+
+.list1 {
+      background:#252525;
+      height:120px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      text-align:left;
+}
+
+.list1 > div {
+     padding:5px;
+     margin:5px;
+     
+}
+
+#my_btn {
+     background-color:tomato;
+     border:1px solid tomato;
+     color:#ffffff;
+     width:20%;
+     border-radius:5px;
+}
+.form-style-6{
+	font: 95% Arial, Helvetica, sans-serif;
+	max-width: 400px;
+	margin: 10px auto;
+	padding: 16px;
+	background: #252525;
+}
+.form-style-6 h1{
+	background: #303030;
+	padding: 20px 0;
+	font-size: 140%;
+	font-weight: 300;
+	text-align: center;
+	font-weight:bold;
+	color: #fff;
+	margin: -16px -16px 16px -16px;
+}
+.form-style-6 input[type="text"],
+.form-style-6 input[type="date"],
+.form-style-6 input[type="datetime"],
+.form-style-6 input[type="email"],
+.form-style-6 input[type="number"],
+.form-style-6 input[type="search"],
+.form-style-6 input[type="time"],
+.form-style-6 input[type="url"],
+.form-style-6 textarea,
+.form-style-6 select 
+{
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	background: #111111;
+	margin-bottom: 4%;
+	border: 1px solid #ccc;
+	padding: 3%;
+	color: #555;
+	font: 95% Arial, Helvetica, sans-serif;
+}
+.form-style-6 input[type="text"]:focus,
+.form-style-6 input[type="date"]:focus,
+.form-style-6 input[type="datetime"]:focus,
+.form-style-6 input[type="email"]:focus,
+.form-style-6 input[type="number"]:focus,
+.form-style-6 input[type="search"]:focus,
+.form-style-6 input[type="time"]:focus,
+.form-style-6 input[type="url"]:focus,
+.form-style-6 textarea:focus,
+.form-style-6 select:focus
+{
+	box-shadow: 0 0 5px #43D1AF;
+	padding: 3%;
+	border: 1px solid #43D1AF;
+}
+
+.form-style-6 input[type="submit"],
+.form-style-6 input[type="button"]{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	padding: 3%;
+	background: #43D1AF;
+	border-bottom: 2px solid #30C29E;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;	
+	color: #fff;
+}
+.form-style-6 input[type="submit"]:hover,
+.form-style-6 input[type="button"]:hover{
+	background: #2EBC99;
+}
+
+
+</style>
+</head>
+<body>
+<details>
+<summary>settings</summary>
+
+<div class="form-style-6">
+<h1>Add</h1>
+<form id="_add_">
+<input type="text" id="en_11" name="en" placeholder="en" />
+<input type="text" id="bn_11" name="bn" placeholder="bn" />
+<input type="text" id="en_2" name="en" placeholder="x_en" />
+<input type="text" id="bn_2" name="bn" placeholder="x_bn" />
+<input type="button" value="more" >
+<input type="submit" value="Send" />
+</form>
+</div>
+
+<div class="form-style-6">
+<h1>Remove</h1>
+<form id="_remove_">
+<input type="text" id="_rm_r"  name="s_no" placeholder="S.no" />
+<input type="submit" value="Send" />
+</form>
+</div>
+</details>
+
+<div class="main" id="main"></div>
+
+<script>
+'use strict';
+
+let allData;
+
+function obj_url(nnn){
+   return Object.keys(nnn).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(nnn[key])}`).join('&');
+};
+if(!sessionStorage.getItem("password")){
+    sessionStorage.setItem("password",'');
+};
+
+function write_doc(obj){
+   let main__ = "";
+    for(let m=0;m<obj.length;m++){
+       main__ = main__ + `<div class="main1"><div class="main2"><span>${m+1}. <\/span><span>${obj[m]["en"]} <\/span>--><span> ${obj[m]["bn"]}<\/span><\/div><div class="list1">`;
+       for(let n=0;n<obj[m]["list"].length;n++){
+          main__ = main__ + `<div>=> ${obj[m]["list"][n]["en"]} --> ${obj[m]["list"][n]["bn"]}<\/div>`;
+       }
+       main__ = main__ + `<\/div><\/div>`;
+    }
+    document.getElementById("main").innerHTML = main__;
+};
+//write_doc(obj_);
+
+fetch('./en_bn_.json').then((res)=>res.json()).then((data)=>{
+  allData = data;
+  write_doc(allData);
+});
+
+document.getElementById("_add_").onsubmit=(e)=>{
+   e.preventDefault();
+      let obj_data = {
+           "en" : document.getElementById("en_11").value,
+           "bn" : document.getElementById("bn_11").value,
+         "list" : [
+               {
+                  "en" : document.getElementById("en_2").value,
+                  "bn" : document.getElementById("bn_2").value
+               }
+         ]
+      };
+      const add_data = {
+           pass : prompt("password",sessionStorage.getItem("password")),
+         action : "_insert",
+           data : JSON.stringify(obj_data)
+      };
+      fetch(`./en_bn_.json?${obj_url(add_data)}`).then(res=>res.json()).then((data)=>{
+          allData = data;
+          write_doc(allData);
+          sessionStorage.setItem("password", add_data.pass);
+      });
+      document.getElementById("en_11").value="";
+      document.getElementById("bn_11").value="";
+      document.getElementById("en_2").value="";
+      document.getElementById("bn_2").value="";
+};
+
+document.getElementById("_remove_").onsubmit=(e)=>{
+   e.preventDefault();
+   let sNum = Number(document.getElementById("_rm_r").value)-1;
+   const rm_data = {
+           pass : prompt("password",sessionStorage.getItem("password")),
+         action : "delete",
+           data : JSON.stringify(allData[sNum])
+   };
+   if(confirm(`Do you want to delete\n ${JSON.stringify(allData[sNum],null,2)}`)){
+   fetch(`./en_bn_.json?${obj_url(rm_data)}`).then(res=>res.json()).then((data)=>{
+       allData = data;
+       write_doc(allData);
+       sessionStorage.setItem("password", rm_data.pass);
+   });
+   }
+};
+
+
+
+</script>
+</body>
+</html>

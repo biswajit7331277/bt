@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Biswajit Thakur">
+<title>Biswajit Thakur</title>
+<style type="text/css">
+body {
+       background-color:#121212;
+       color:#ffffff;
+}
+.list {
+       display:flex;
+       flex-direction:column;
+       text-align:center;
+       justify-content:center;
+       align-items:center;
+       width:100%;
+}
+.list div {
+       padding:20px;
+       margin:3px;
+      /* border:1px solid green;*/
+       font-weight:bold;
+       font-size:120%;
+       font-family:Times;
+}
+a:link,a:visited {
+       color:tomato;
+}
+
+</style>
+</head>
+<body>
+<h3 style="text-align:left;color:#ff0000;margin:15px;" >Biswajit Thakur</h3>
+<div class="list" id="list"></div>
+
+<script>
+
+//document.getElementById("list")
+/*
+async function _bt_(url,obj,_data){
+    try {
+   function objToUrl(_o){ return Object.keys(_o).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(_o[key])}`).join('&'); };
+      const _obj = objToUrl({
+              action : obj.action,
+                pass : obj.pass,
+                path : obj.path,
+                data : (typeof _data==='object')?JSON.stringify(_data):_data
+      });
+    if(!confirm('your data is \n\n'+JSON.stringify(_data,null,3)+'\n\nDo you want to insert this data')){return false};
+      const response = await fetch(url+'?'+_obj);
+      const __data__ = await response.json();
+      return __data__;
+   } catch(err){throw new Error(err)}
+}
+
+_bt_("./",{action:"insert",path:"./my-data.json",pass:'12345678'},{name:"Biswajit Thakur",gf:"❤️❤️❤️"}).then((a)=>{
+alert(JSON.stringify(a,null,2))}).catch((err)=>{
+alert(err)
+})
+
+*/
+
+fetch('./list.json').then(res=>res.json()).then((data)=>{
+let mass = "";
+for(let i=0;i<data.length;i++){
+      mass += '<div>&gt;&gt; '+data[i]["name"].link(data[i]["url"])+' &lt;&lt;<\/div>';
+}
+document.getElementById("list").innerHTML=mass;
+});
+
+</script>
+</body>
+</html>

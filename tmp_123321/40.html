@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="Biswajit Thakur" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>add verb</title>
+<link rel="stylesheet" href="./../../src/css/add.css">
+<script src="./../../src/js/add.php?q=verbs"></script>
+<script type="text/javascript">
+"use strict";
+
+function load(){
+   let data = JSON.parse(arr_verbs);
+   let bn = document.forms["myForm"]["bn"].value;
+   let v1 = document.forms["myForm"]["v1"].value.toLowerCase();
+   let v2 = document.forms["myForm"]["v2"].value.toLowerCase();
+   let v3 = document.forms["myForm"]["v3"].value.toLowerCase();
+
+for(let a in data){
+   if((data[a].v1.toLowerCase()==v1)&&(data[a].v2.toLowerCase()==v2)&&(data[a].v3.toLowerCase()==v3)){
+          window.alert("Sorry..\nThis verb is already added in the list.");
+         return false;
+       }
+     };
+  return true;
+};
+
+</script>
+</head>
+<body>
+<form class="box" action="process.php" method="POST" name="myForm" onsubmit="return load()">
+<h2>Add Verb</h2>
+<br>
+<input type="text" name="bn" placeholder="bengali meaning of verbs"  required>
+<input type="text" name="v1" placeholder="present" required>
+<input type="text" name="v2" placeholder="past" required>
+<input type="text" name="v3" placeholder="past participle" required>
+<input type="text" name="password" placeholder="password" required>
+<span class="sucss"></span>
+<input type="submit" value="submit">
+<br><br><table border="0" style="width:300px;">
+<tr>
+<td style="width:100px;text-align:left;"><a href="./../../index.html">&lt;&lt; home</a></td>
+<td style="width:100px;text-align:right;"><a href="./../../verbs/index.php" >list of verb</a></td>
+</tr>
+</table>
+</form>
+</body>
+</html>

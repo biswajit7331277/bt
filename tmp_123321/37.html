@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="Biswajit Thakur" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Tenses</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<h2>Tense</h2>
+<div style="color:#b35faa">
+&#2453;&#2507;&#2472;&#32;&#2453;&#2494;&#2460;&#32;&#2488;&#2478;&#2509;&#2474;&#2494;&#2470;&#2472;&#2503;&#2480;&#32;&#2488;&#2478;&#2479;&#2492;&#2453;&#2503;&#32;&#116;&#101;&#110;&#115;&#101;&#32;&#2476;&#2494;&#32;&#2453;&#2494;&#2482;&#32;&#2476;&#2482;&#2503;&#2404;&#32;&#84;&#101;&#110;&#115;&#101;&#32;&#2470;&#2509;&#2476;&#2494;&#2480;&#2494;&#32;&#2488;&#2478;&#2479;&#2492;&#2453;&#2503;&#32;&#2441;&#2482;&#2509;&#2482;&#2503;&#2454;&#32;&#2453;&#2480;&#2494;&#32;&#2489;&#2479;&#2492;&#32;&#2447;&#2476;&#2434;&#32;&#2479;&#2494;&#32;&#2476;&#2480;&#2509;&#2468;&#2478;&#2494;&#2472;&#44;&#32;&#2437;&#2468;&#2496;&#2468;&#32;&#2453;&#2495;&#2434;&#2476;&#2494;&#32;&#2477;&#2476;&#2495;&#2487;&#2509;&#2479;&#2468;&#32;&#2489;&#2468;&#2503;&#32;&#2474;&#2494;&#2480;&#2503;&#2404;
+</div><br>
+<div style="color:#d0b7f9" ><span style="background-color:#200727;color:rgb(52,124,119);" >Types of Tense:</span><br/>
+The concept of time (tense) can be differentiated into three categories.<br>
+<ul>
+     <li>The present / simple present tense. (what are you presently doing )</li><br>
+     <li>The past.(What you did some time back).</li><br>
+     <li>The future. (What you will do some time later).</li>
+
+</div><br>
+<div style="color:#c72871;font-weight:bold;">
+<select id="select">
+<option value="">select a tense</option>
+<option value="present">Present Tense</option>
+<option value="past">Past Tense</option>
+<option value="future">Future Tense</option>
+</select>
+</div><br>
+<div id="loadHead">
+<!--progress></progress-->
+</div>
+<div id="loadBody"></div>
+<script type="text/javascript">
+"use strict";
+
+document.getElementById("select").addEventListener("change",(event)=>{
+      switch (event.target.value){
+          case "present":
+               fetch("./../tense/data/present.tense.json")
+               .then((res)=>{
+               return res.json()})
+               .then((data)=>{
+               const loadHead = document.getElementById("loadHead");
+               const loadBody = document.getElementById("loadBody");
+               let d = ""
+               for(let i=0;i<data["body"].length;i++){
+               d += loadData(data["body"],i);
+               }
+               loadHead.innerHTML = loadData1(data);
+               loadBody.innerHTML = d;
+               }).catch((err)=>{
+               console.error('Fetch problem:' + err.message);
+               });
+          break;
+          case "past":
+               fetch("./../tense/data/past.tense.json").then(res=>res.json()).then((data)=>{
+               const loadHead = document.getElementById("loadHead");
+               const loadBody = document.getElementById("loadBody");
+               let d = ""
+               for(let i=0;i<data["body"].length;i++){
+               d += loadData(data["body"],i);
+               }
+               loadHead.innerHTML = loadData1(data);
+               loadBody.innerHTML = d;
+               }).catch((err)=>{
+               console.error('Fetch problem:' + err.message);
+               });
+          break;
+          case "future":
+               fetch("./../tense/data/future.tense.json").then(res=>res.json()).then((data)=>{
+               const loadHead = document.getElementById("loadHead");
+               const loadBody = document.getElementById("loadBody");
+               let d = ""
+               for(let i=0;i<data["body"].length;i++){
+               d += loadData(data["body"],i);
+               }
+               loadHead.innerHTML = loadData1(data);
+               loadBody.innerHTML = d;
+               }).catch((err)=>{
+               console.error('Fetch problem:' + err.message);
+               });
+          break;
+          case "":
+          default:
+          alert("You have to select a options");
+      }
+   
+});
+
+function loadData1(d){
+     let w ="";
+       w +="<div class=\"header\">"+d["name"]+"<\/div><br>"+
+       "<div>"+
+       "<p style=\"color:rgb(160,82,45);\">"+d["name"]+" : "+d["definition"]+"<\/p>"+
+       "<p><div style=\"color:rgb(148,0,211);\">"+d["name"]+" is classified into four categories.<\/div>"+
+       "<ol>"+
+       "<a href=\"./"+d["file_name"]+"#"+d["body"][0]["id"]+"\"><li>"+d["body"][0]["tense"]+"<\/li><\/a>"+
+       "<a href=\"./"+d["file_name"]+"#"+d["body"][1]["id"]+"\"><li>"+d["body"][1]["tense"]+"<\/li><\/a>"+
+       "<a href=\"./"+d["file_name"]+"#"+d["body"][2]["id"]+"\"><li>"+d["body"][2]["tense"]+"<\/li><\/a>"+
+       "<a href=\"./"+d["file_name"]+"#"+d["body"][3]["id"]+"\"><li>"+d["body"][3]["tense"]+"<\/li><\/a>"+
+       "<\/ol>"+
+       "<\/p>"+
+       "<\/div>";
+   return w;
+}
+function loadData(d,n){
+     let w ="";
+    w += "<div id=\""+d[n]["id"]+"\"><center><h3>"+d[n]["tense"]+"<\/h3><\/center>"+
+     "<p style=\"color:rgb(46,139,87);\">"+d[n]["definition"]+"<\/p>"+
+     "<div style=\"text-align:left;color:#ff0080;\" >Structure: "+d[n]["structure"]+"<\/div><br\/>"+
+     "<div style=\"text-align:left;color:rgb(189,183,107);\">Example :<\/div>"+
+     "<ol style=\"color:#cccccc;\">";
+     for(let a=0;a<d[n]["ls"].length;a++){
+       w += "<li>"+d[n]["ls"][a]["en"]+" --> "+d[n]["ls"][a]["bn"]+"<\/li>";
+     }
+     w+="<\/ol><\/div><hr\/>";
+    return w;
+   }
+
+(function(a){
+'use strict';
+    try {
+       const url = new URL(a);
+       const _protocol = url.protocol;
+       const _href = url.href;
+   switch (_protocol){
+         case 'https:':
+         case 'http:':
+         case 'file:':
+                 return _href;
+               break;
+         case 'content:':
+             const AndroidReg = /^(content:)\/(\/?)+[a-zA-Z0-9\.\u005F]+\/[a-zA-Z0-9\.\u005F]+/i;
+             const AndroidUrl = _href.replace(AndroidReg,'file:\/\/\/sdcard');
+             document.body.innerHTML=`
+    <div style="text-align:center;color:rgba(255,0,0,1);background-color:rgba(200,0,0,0.3);margin:5px;padding:5px;width:${screen.width}px;">
+    <h3>Error URL<\/h3><br>
+    <div style="text-align:left;word-wrap:break-word;">${_href}<\/div>
+    <\/div>
+    <div style="text-align: left;color:rgba(0,100,100,1);background-color:rgba(0,255,0,0.1);margin:5px;padding:5px;width:${screen.width}px;">
+    <div style="color:rgb(250,0,250);font-size:20px;text-align:left;word-wrap:break-word;">open this url<\/div><br>
+    <div style="word-wrap:break-word;">${AndroidUrl}<\/div>
+    <\/div>
+             `; //\//
+                   return AndroidUrl;
+               break;
+         default:
+                 return _href;
+    }
+  } catch (err){
+       console.error(err);
+       return 'Invalid URL'; }
+}(window.location));
+</script>
+</body>
+</html>

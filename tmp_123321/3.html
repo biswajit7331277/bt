@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<style type="text/css">
+body {
+      text-align:center;
+      background-color:black;
+      color:white;
+}
+</style>
+</head>
+<body>
+<pre>
+  <span id="n1"></span> | <span id="n2"></span> | ?
+             
+</pre>
+<button onclick="answ()">ans</button>
+<button onclick="cal()">next</button>
+
+<script type="text/javascript">
+
+alert("Biswajit Thakur");
+
+function rand(){
+    let a = Math.floor(Math.random()*10);
+    for(;;){
+       if(a===0||a===1){
+          a = Math.floor(Math.random()*10);
+          continue;
+       } else {
+       return a;
+       break;
+       }
+    }
+};
+
+let ans;
+
+function answ(){
+    alert(ans);
+}
+
+function cal(){
+    let n1 = rand();
+    let n2x=Math.floor(Math.random()*(10**rand()));
+    let carry=n2x%n1;
+    let n2=n2x-carry;
+    ans=n2/n1;
+    
+    document.getElementById("n1").innerHTML=n1;
+    document.getElementById("n2").innerHTML=n2;
+    
+}
+
+
+cal()
+</script>
+</body>
+</html>

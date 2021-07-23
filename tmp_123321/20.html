@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="Biswajit Thakur" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title></title>
+<link rel="stylesheet" href="./css/cube.css">
+</head>
+<body>
+<h2>How to solve Rubik's cube</h2>
+<br/>
+
+<div id="main1">
+<div class="m1">
+<div class="bt">1. Solve the white cross</div>
+<img width="100" src="./svg/1.svg">
+</div>
+<div class="c123">
+<div class="c1"><img width="100" src="./svg/1.1.svg"></div>
+<div class="c2">
+  <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M10.146 4.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L12.793 8l-2.647-2.646a.5.5 0 0 1 0-.708z"/>
+  <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8z"/>
+  </svg>
+</div>
+<div class="c3"><img width="100" src="./svg/1.svg"></div>
+</div>
+<div class="_ff_"><code>Ri-U-Fi-Ui</code></div><br/>
+<div class="btm">
+<div class="btm_1"><button class="myButton" >previous</button></div>
+<div class="btm_2"><button class="myButton" onClick="page_2()">next</button></div>
+</div>
+</div>
+
+<div id="main2">
+<div class="m1">
+<div class="bt">2. Solve the white corners</div>
+<img width="100" src="./svg/2.svg">
+</div>
+<div class="c123">
+<div class="c1"><img width="100" src="./svg/2.1.svg"></div>
+<div class="c2">
+  <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M10.146 4.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L12.793 8l-2.647-2.646a.5.5 0 0 1 0-.708z"/>
+  <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8z"/>
+  </svg>
+</div>
+<div class="c3"><img width="100" src="./svg/2.svg"></div>
+</div>
+<div class="_ff_"><code>Ri-Di-R-D</code></div><br/>
+<div class="btm">
+<div class="btm_1"><button class="myButton" onClick="page_1()">previous</button></div>
+<div class="btm_2"><button class="myButton" onClick="page_3()">next</button></div>
+</div>
+</div>
+
+<div id="main3">
+<div class="m1">
+<div class="bt">3. Solve the middle layer</div>
+<img width="100" src="./svg/3.svg">
+</div>
+<div class="c123_1">
+<div class="c1"><img width="100" src="./svg/3.1.svg"></div>
+<div class="_ff_"><code>U-R-Ui-Ri-Ui-Fi-U-F</code></div><br/>
+<div class="c3"><img width="100" src="./svg/3.2.svg"></div>
+<div class="_ff_"><code>Ui-Li-U-L-U-F-Ui-Fi</code></div><br/>
+</div>
+<div class="btm">
+<div class="btm_1"><button class="myButton" onClick="page_2()">previous</button></div>
+<div class="btm_2"><button class="myButton" onClick="page_4()">next</button></div>
+</div>
+</div>
+
+<div id="main4">
+<div class="m1">
+<div class="bt">4. Solve the top layer.<br>The yellow cross</div>
+<img width="100" src="./svg/4.svg">
+</div>
+<div class="c123_1">
+<div class="c1"><img width="100" src="./svg/4.1.svg"></div>
+<div class="_ff_"><code>F-U-R-Ui-Ri-Fi</code></div><br/>
+<div class="c3"><img width="100" src="./svg/4.2.svg"></div>
+<div class="_ff_"><code>F-U-R-Ui-Ri-Fi</code></div><br/>
+<div class="c3"><img width="100" src="./svg/4.3.svg"></div>
+<div class="_ff_"><code>F-R-U-Ri-Ui-Fi</code></div><br/>
+</div>
+<div class="btm">
+<div class="btm_1"><button class="myButton" onClick="page_3()">previous</button></div>
+<div class="btm_2"><button class="myButton" onClick="page_5()">next</button></div>
+</div>
+</div>
+
+<div id="main5">
+<div class="m1">
+<div class="bt">5. Solve the yellow Edges</div>
+<img width="100" src="./svg/5.svg">
+</div>
+<div class="c123_1">
+<div class="c1"><img width="100" src="./svg/5.1.svg"></div>
+<div class="_ff_"><code>R-U-Ri-U-R-U2-Ri-U</code></div><br/>
+</div>
+<div class="btm">
+<div class="btm_1"><button class="myButton" onClick="page_4()">previous</button></div>
+<div class="btm_2"><button class="myButton" onClick="page_6()">next</button></div>
+</div>
+</div>
+
+<div id="main6">
+<div class="m1">
+<div class="bt">6. Position Last Layer Corners</div>
+<img width="100" src="./svg/6.svg">
+</div>
+<div class="c123_1">
+<div class="c1"><img width="100" src="./svg/6.1.svg"></div>
+<div class="_ff_"><code>U-R-Ui-Li-U-Ri-Ui-L</code></div><br/>
+</div>
+<div class="btm">
+<div class="btm_1"><button class="myButton" onClick="page_5()">previous</button></div>
+<div class="btm_2"><button class="myButton" onClick="page_7()">next</button></div>
+</div>
+</div>
+
+<div id="main7">
+<div class="m1">
+<div class="bt">7. Orient last layer corners</div>
+<img width="100" src="./svg/7.svg">
+</div>
+<div class="c123_1">
+<div class="c1"><img width="100" src="./svg/7.1.svg"></div>
+<div class="_ff_"><code>Ri-Di-R-D</code></div><br/>
+</div>
+<div class="btm">
+<div class="btm_1"><button class="myButton" onClick="page_6()">previous</button></div>
+<div class="btm_2"><button class="myButton">next</button></div>
+</div>
+</div>
+
+
+<script src="./js/cube.js"></script>
+</body>
+</html>

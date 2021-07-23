@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<form id="myForm" name="myForm">
+  <div>
+    <label for="username">Enter name:</label>
+    <input type="text" id="username" name="username">
+  </div>
+  <div>
+    <label for="useracc">Enter account number:</label>
+    <input type="text" id="useracc" name="useracc">
+  </div>
+  <div>
+    <label for="path">path</label>
+    <input type="text" value="./js/db.json" id="path" name="path">
+  </div>
+
+  <input type="submit" value="Submit!">
+</form>
+
+
+<script type="text/javascript">
+/*
+let myForm = document.getElementById('myForm');
+let formData = new FormData(myForm);
+alert(formData)
+*/
+let fff = document.getElementById("myForm")
+
+
+
+
+fff.onsubmit =(e) => {
+    e.preventDefault();
+  
+  let username = document.getElementById("username").value;
+  let useracc = document.getElementById("useracc").value;
+  let _path = document.getElementById("path").value;
+    
+    
+  let _data_ = JSON.stringify({
+        name : username,
+        account : Number(useracc)
+  });
+  let nnn = {
+       data : _data_,
+       path : _path,
+       pass : prompt("Enter password","12345678"),
+       action : "delete"
+  }
+  
+  const qs = Object.keys(nnn)
+  .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(nnn[key])}`)
+  .join('&');
+  
+  fetch(`http://localhost:8000?${qs}`).then(r=>r.json()).then((data)=>{
+  alert(JSON.stringify(data,null,2))
+  })
+  
+  };
+
+</script>
+</body>
+</html>

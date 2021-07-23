@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+let _math = {};
+
+_math.sum = function(...a){
+      function _sum(x,y){
+           const dot = /\./;
+           let x1 = x.replace(/(\s+|\,)/g,'');
+           let y1 = y.replace(/(\s+|\,)/g,'');
+            if(!(dot.test(x1)&&dot.test(y1))){
+                return BigInt(x1)+BigInt(y1);
+            } else if(dot.test(x1)||dot.test(y1)){
+                
+            }
+      }
+     
+}
+//alert("123 456,788,76 66 677".replace(/(\s+|\,)/g,''))
+alert(BigInt("11111111")+BigInt("222222222"))
+</script>
+</body>
+</html>
