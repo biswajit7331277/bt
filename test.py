@@ -103,7 +103,9 @@ os.system('git status')
 os.system('git add .')
 os.system('git status')
 os.system('git commit -m "abcdxyzq23"')
-
+os.system('git branch -M master')
+os.system('git remote add origin https://github.com/biswajit7331277/bt.git')
+os.system('git push -u origin master')
 #os.system('git config --global user.name')
 #os.system('git config --global user.email')
 
